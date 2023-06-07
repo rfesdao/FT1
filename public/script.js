@@ -4,6 +4,10 @@ let totalMinutes = 0
 document.getElementById('totalMinutes').innerHTML = totalMinutes
 let totalTarget = 0
 
+let completed = 0
+// completed = totalMinutes/totalTarget*100
+document.getElementById('completed').innerHTML = completed + '%'
+
 const exercises = [
     {
         id: 'exercise-1',
@@ -29,8 +33,7 @@ exercises.forEach(element => {
     totalTarget = totalTarget + element.value
 })
 
-let completed = totalMinutes/totalTarget*100
-document.getElementById('completed').innerHTML = completed + '%'
+
 
 exercises.forEach(element => {
     const btn = document.getElementById(element.id)
@@ -43,7 +46,7 @@ exercises.forEach(element => {
             btn.classList.add('fas', 'fa-check-circle')
             
             totalMinutes = totalMinutes + element.value
-            let completed = totalMinutes/totalTarget*100
+            completed = totalMinutes/totalTarget*100
             
             document.getElementById('totalMinutes').innerHTML = totalMinutes
             document.getElementById('completed').innerHTML = completed + '%'
@@ -53,6 +56,8 @@ exercises.forEach(element => {
             btn.classList.add('far', 'fa-circle')
 
             totalMinutes = totalMinutes - element.value
+            completed = totalMinutes/totalTarget*100
+            
             document.getElementById('totalMinutes').innerHTML = totalMinutes
             document.getElementById('completed').innerHTML = completed + '%'
         }
